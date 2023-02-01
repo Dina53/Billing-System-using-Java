@@ -1,0 +1,328 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int id=1001,proid=1,bid=5001;
+	    
+//Cashier
+	    ArrayList<Integer> cashierid=new ArrayList<Integer>();   //cashier id   
+	    ArrayList<String> cashiername=new ArrayList<String>();     //cashier name
+	    
+ //Stock
+	    ArrayList<String>pname=new ArrayList<String>();        //product name
+	    ArrayList<Integer>pid=new ArrayList<Integer>();        //product id
+	    ArrayList<Integer>bqty=new ArrayList<Integer>();       //buying quantity
+	    ArrayList<Integer>pu=new ArrayList<Integer>();         //price/unit
+	    ArrayList<Integer>tax=new ArrayList<Integer>();        //tax
+	    
+ //Bill
+	    ArrayList<Integer>Billno=new ArrayList<Integer>();     //bill number
+	    ArrayList<String>spname=new ArrayList<String>();       //selling product name
+	    ArrayList<Integer>sqty=new ArrayList<Integer>();      //selling quantity
+	    ArrayList<Integer>price=new ArrayList<Integer>();     //price
+	    ArrayList<Integer>taxamt=new ArrayList<Integer>();    //tax amount
+	    ArrayList<Integer>total=new ArrayList<Integer>();      //total
+	    ArrayList<Integer>match=new ArrayList<Integer>();       //match
+	 
+	    
+		do{
+		    System.out.println("1. owner\n2. cashier\n3. exit");
+		    int chc=sc.nextInt();
+		    if(chc==1)
+		    {
+		        System.out.println("Enter owner Id:");    //5478
+		        int oid=sc.nextInt();
+		        System.out.println("Enter owner pwd:");  //password
+		        String opwd=sc.next();
+		        if(oid==5478&&opwd.equals("Dina"))
+		        {
+		            System.out.println("Login Successful");
+		            do{
+		                System.out.println("1. Add cashier\n2. Report\n3.Logout");
+		                int opt=sc.nextInt();
+		                if(opt==1)
+		                {
+		                    System.out.println("Enter cashier name:"); //VICKY
+		                    cashierid.add(id);
+		                    cashiername.add(sc.next());
+		                    System.out.println("cashier added in the id:"+id);//1001
+		                    id++;
+		                }
+		                else if(opt==2)
+		                {
+		 //cashier Details
+		                    System.out.println("Cashier Details:");  //VICKY
+		                    boolean f3=true;
+		                    System.out.println("Cashier_Id\tCashier_Name");
+		                    for(int i=0;i<cashierid.size();i++)
+		                    {
+		                        f3=false;
+		                        System.out.println(cashierid.get(i)+"\t"+cashiername.get(i));
+		                    }
+		                    if(f3)
+		                    System.out.println("No Cashier Added");
+		    //Stock Report
+		                    System.out.println("Stock Report:");
+		                    boolean f1=true;
+		                     System.out.println("Pid\tProd_Name\tStock_Qty\tPrice_Unit\tTax%");
+		                    for(int i=0;i<pid.size();i++)
+		                    {
+		                        f1=false;
+		                        System.out.println(pid.get(i)+"\t"+pname.get(i)+"\t"+
+		                        bqty.get(i)+"\t"+pu.get(i)+"\t"+tax.get(i));
+		                    }
+		                    if(f1)
+		                    System.out.println("Nill");
+		                    
+		       //Bill Report
+		                    
+		                    System.out.println("Bill Report:");
+		                    boolean f2=true;
+		                     System.out.println("Billno\tPid\tProd_Name\tSold_Qty\tPrice\tTax_Amt\tTotal");
+		                    for(int i=0;i<Billno.size();i++)
+		                    {
+		                        f2=false;
+		                        System.out.println(Billno.get(i)+"\t"+match.get(i)+"\t"+
+		                        spname.get(i)+"\t"+sqty.get(i)+"\t"+price.get(i)+"\t"+taxamt.get(i)+
+		                        "\t"+total.get(i));
+		                    }
+		                    if(f2)
+		                    System.out.println("Nill");
+		                }
+		                else
+		                break;
+		                
+		            }while(true);
+		        }
+		        else
+		        System.out.println("Invalid Credential");
+		        
+		    }
+		    else if(chc==2)
+		    {
+		        System.out.println("Enter cashier Id:");  //VICKY
+		        int cid=sc.nextInt();
+		        System.out.println("Enter cashier name:");
+		        String cname=sc.next();
+		        boolean f=false;
+		        for(int i=0;i<cashierid.size();i++)
+		        {
+		            if(cashierid.get(i)==cid&&cashiername.get(i).equals(cname))
+		            {
+		                f=true;
+		                break;
+		            }
+		        }
+		        if(f)
+		        {
+		            System.out.println("Login Successful");
+		            do{
+		                System.out.println("1. Stock\n2. Bill\n3.Logout");
+		                int opt=sc.nextInt();
+		                if(opt==1)
+		                {
+		                    
+		                        System.out.println("1.Add\n2.Update\n3.delete");
+		                    
+		                        int t=sc.nextInt();
+		                        if(t==1)
+		                        {
+		       //add Stock
+		                            System.out.println("Enter product name, buying qty, price/unit, tax% below");
+		                            pname.add(sc.next());
+		                            bqty.add(sc.nextInt());
+		                            pu.add(sc.nextInt());
+		                            tax.add(sc.nextInt());
+		                            pid.add(proid);
+		                            System.out.println("Stocks added in the product id:"+proid);
+		                            proid++;
+
+		                        }
+		                        else if(t==2)
+		                        {
+		      //Update Stock
+		                            System.out.println("Enter prod id:");
+		                            int x=sc.nextInt();
+		                            boolean g=true;
+		                            for(int i=0;i<pid.size();i++)
+		                            {
+		                                if(x==pid.get(i))
+		                                {
+		                                    g=false;
+		                                    System.out.println(pname.get(i)+"--"+bqty.get(i)+"--"+
+		                                    pu.get(i)+"--"+tax.get(i));
+		                                    System.out.println("Enter new buying Qty, price/unit, tax% below:");
+		                                    bqty.set(i,sc.nextInt());
+		                                    pu.set(i,sc.nextInt());
+		                                    tax.set(i,sc.nextInt());
+		                                    System.out.println("Stock Updated");
+		                                    break;
+		                                }
+		                            }
+		                            if(g)
+		                            System.out.println("Invalid Product ID");
+		                        }
+		                        else if(t==3)
+		                        {
+		      //delete stock
+		                            System.out.println("Enter prod id:");
+		                            int x=sc.nextInt();
+		                            boolean h=true;
+		                            for(int i=0;i<pid.size();i++)
+		                            {
+		                                if(x==pid.get(i))
+		                                {
+		                                    h=false;
+		                                    pname.remove(i);
+		                                    bqty.remove(i);
+		                                    pu.remove(i);
+		                                    tax.remove(i);
+		                                    pid.remove(i);
+		                                    System.out.println("Stock deleted");
+		                                    break;
+		                                }
+		                            }
+		                            if(h)
+		                            System.out.println("Invalid Product ID");
+		                        }
+		                    
+		                }
+		                else if(opt==2)
+		                {
+		                      System.out.println("1.Add\n2.Update\n3.delete");
+		                    
+		                        int t=sc.nextInt();
+		                        if(t==1)
+		                        {
+		      //add Bill
+		                            System.out.println("Enter prod id:");
+		                            int x=sc.nextInt();
+		                            boolean g=true;
+		                            int i;
+		                            for( i=0;i<pid.size();i++)
+		                            {
+		                                if(x==pid.get(i))
+		                                {
+		                                    g=false;
+		                                    System.out.println(pname.get(i)+"--"+bqty.get(i)+"--"+
+		                                    pu.get(i)+"--"+tax.get(i));
+		                                    System.out.println("Enter Selling qty:");
+		                                    int temp=sc.nextInt();
+		                                    int a=bqty.get(i);
+		                                    bqty.set(i,a-temp);
+		                                    int pr=temp*pu.get(i);
+		                                    int taxrs=pr*tax.get(i)/100;
+		                                    int tot=pr+taxrs;
+		                                    match.add(pid.get(i));
+		                                    spname.add(pname.get(i));
+		                                    sqty.add(temp);
+		                                    price.add(pr);
+		                                    taxamt.add(taxrs);
+		                                    total.add(tot);
+		                                    Billno.add(bid);
+		                                    System.out.println("Price:"+pr);
+		                                    System.out.println("Tax% - Taxamt:"+tax.get(i)+" "+taxrs);
+		                                    System.out.println("Total Cost:"+tot);
+		                                    System.out.println("Bill added in the Billno:"+bid);
+		                                    bid++;
+		                                    break;
+		                                }
+		                            }
+		                            if(g)
+		                            System.out.println("Invalid Product ID");
+		                            
+		                            
+		                        }
+		                        else if(t==2)
+		                        {
+		        //Update Bill
+		                            System.out.println("Enter Bill no:");
+		                            int y=sc.nextInt();
+		                            boolean g=true;
+		                            int i;
+		                            for( i=0;i<Billno.size();i++)
+		                            {
+		                                if(y==Billno.get(i))
+		                                {
+		                                    g=false;
+		                                    System.out.println(spname.get(i)+"--"+sqty.get(i)+"--"+
+		                                    price.get(i)+"--"+taxamt.get(i)+"--"+total.get(i));
+		                                    System.out.println("Enter new Selling Qty:");
+		                                    int newsell=sc.nextInt();
+		                                    int temp1=sqty.get(i);
+		                                    sqty.set(i,newsell);
+		                                    int j;
+		                                    for( j=0;j<pid.size();j++)
+		                                    {
+		                                        if(pid.get(j)==match.get(i))
+		                                        {
+		                                            break;
+		                                        }
+		                                    }
+		                                    int a1=bqty.get(j);
+		                                    System.out.print(a1);
+		                                    bqty.set(j,a1+temp1);
+		                                    bqty.set(j,bqty.get(j)-newsell);
+		                                    int pr=newsell*pu.get(j);
+		                                    int taxrs=pr*tax.get(j)/100;
+		                                    int tot=pr+taxrs;
+		                                    price.set(i,pr);
+		                                    taxamt.set(i,taxrs);
+		                                    total.set(i,tot);
+		                                    
+		                                    System.out.println("New Price:"+pr);
+		                                    System.out.println("New Tax% - Taxamt:"+tax.get(j)+" "+taxrs);
+		                                    System.out.println("New Total Cost:"+tot);
+		                                    System.out.println("Bill Updated");
+		                                    break;
+		                                }
+		                            }
+		                            if(g)
+		                            System.out.println("Invalid Billno");
+		                           
+		                        }
+		                        else if(t==3)
+		                        {
+		        //delete Bill
+		                            System.out.println("Enter Billno:");
+		                            int z=sc.nextInt();
+		                            boolean h=true;
+		                            for(int i=0;i<Billno.size();i++)
+		                            {
+		                                if(z==Billno.get(i))
+		                                {
+		                                    h=false;
+		                                    spname.remove(i);
+		                                    sqty.remove(i);
+		                                    price.remove(i);
+		                                    taxamt.remove(i);
+		                                    total.remove(i);
+		                                    match.remove(i);
+		                                    Billno.remove(i);
+		                                    System.out.println("Bill deleted");
+		                                    break;
+		                                }
+		                            }
+		                            if(h)
+		                            System.out.println("Invalid Billno");
+		                           
+		                        }
+		                    
+		                }
+		                else
+		                break;
+		                
+		            }while(true);
+		        }
+		        else
+		        System.out.println("Invalid Credential");
+		    }
+		    else
+		    {
+		        System.out.println("thankyou for using...");
+		        break;
+		    }
+		}while(true);
+	}
+}
