@@ -436,7 +436,7 @@ public class Main
 	public static void storeName()
 	{
 	    System.out.print("\t\t\t\t\t*****************************\n");
-	    System.out.println("\t\t\t\t\tWelcome to $alai Arisi Mandi");
+	    System.out.println("\t\t\t\t\tWelcome to My store");
 	    System.out.println("\t\t\t\t\t***************************");
 	}
 }
